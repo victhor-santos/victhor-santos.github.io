@@ -1,5 +1,19 @@
 document.querySelector('#year').textContent = new Date().getFullYear();
 
+document.querySelectorAll('.project[data-repository]').forEach(project => {
+  const openRepository = () => window.location.href = project.dataset.repository;
+  project.addEventListener('click', event => {
+    if (event.target.closest('a, button')) return;
+    openRepository();
+  });
+  project.addEventListener('keydown', event => {
+    if ((event.key === 'Enter' || event.key === ' ') && event.target === project) {
+      event.preventDefault();
+      openRepository();
+    }
+  });
+});
+
 document.querySelectorAll('.project-carousel').forEach(carousel => {
   const track = carousel.querySelector('.project-track');
   const previous = carousel.querySelector('.carousel-prev');
