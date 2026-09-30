@@ -1,6 +1,8 @@
-# Victhor Santos — Portfólio
+# Victhor Santos — AI Engineering Portfolio
 
-Portfólio estático em português, com layout responsivo, navegação por teclado e respeito à preferência de redução de movimento. HTML, CSS e JavaScript sem dependências de instalação. As fontes do Google Fonts possuem alternativas locais.
+Portfólio profissional de Victhor Santos, estudante de Engenharia de Software focado em AI Engineering. O site apresenta a evolução de fundamentos em Java e back-end para sistemas que integram Python e Machine Learning a aplicações reais.
+
+O projeto é estático, responsivo, navegável por teclado e respeita a preferência de redução de movimento. Usa HTML, CSS e JavaScript sem dependências de instalação.
 
 ## Visualizar
 
@@ -10,7 +12,10 @@ Com Node.js instalado, execute `node server.mjs` nesta pasta e abra http://127.0
 
 - `dist/index.html`: apresentação, projetos e contatos.
 - `dist/styles.css`: identidade visual e adaptação para celular.
-- `dist/script.js`: ano do rodapé.
+- `dist/script.js`: cards clicáveis, carrosséis, ampliação de diagramas e ano do rodapé.
+- `scripts/generate-diagrams.mjs`: gera os diagramas SVG; execute com `node scripts/generate-diagrams.mjs`.
+
+O projeto principal distingue a base Java implementada da integração de Route Intelligence planejada. Python/ML são parte da direção de estudos e evolução da plataforma, sem apresentar a integração como concluída.
 
 Os três projetos foram selecionados pela data de criação dos repositórios públicos em 24/09/2026. O conteúdo é estático: novos repositórios não substituem automaticamente a seleção.
 
