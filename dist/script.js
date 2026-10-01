@@ -1,9 +1,24 @@
-document.querySelector('#year').textContent = new Date().getFullYear();
+const year = document.querySelector('#year');
+if (year) year.textContent = new Date().getFullYear();
+
+// Stack icons expose their labels without activating the surrounding project link.
+document.querySelectorAll('.tech-icon[tabindex]').forEach(icon => {
+  icon.addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
+  });
+  icon.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  });
+});
 
 document.querySelectorAll('.project[data-repository]').forEach(project => {
   const openRepository = () => window.location.href = project.dataset.repository;
   project.addEventListener('click', event => {
-    if (event.target.closest('a, button')) return;
+    if (event.target.closest('a, button, .tech-icon[tabindex]')) return;
     openRepository();
   });
   project.addEventListener('keydown', event => {
@@ -19,6 +34,7 @@ document.querySelectorAll('.project-carousel').forEach(carousel => {
   const previous = carousel.querySelector('.carousel-prev');
   const next = carousel.querySelector('.carousel-next');
   const status = carousel.querySelector('.carousel-status');
+  if (!track || !previous || !next || !status) return;
   const go = index => track.scrollTo({
     left: index * track.clientWidth,
     behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
@@ -40,20 +56,25 @@ document.querySelectorAll('.project-carousel').forEach(carousel => {
 });
 
 const dialog = document.querySelector('#architecture-dialog');
-document.querySelectorAll('.architecture-open').forEach(button => {
-  button.addEventListener('click', () => {
-    document.querySelector('#architecture-title').textContent = button.dataset.title;
-    const image = document.querySelector('#architecture-image');
-    image.src = button.dataset.image;
-    image.alt = `Diagrama de arquitetura de ${button.dataset.title}`;
-    document.querySelector('#architecture-original').href = button.dataset.image;
-    dialog.showModal();
+if (dialog) {
+  const title = dialog.querySelector('#architecture-title');
+  const image = dialog.querySelector('#architecture-image');
+  const original = dialog.querySelector('#architecture-original');
+  document.querySelectorAll('.architecture-open').forEach(button => {
+    button.addEventListener('click', () => {
+      if (!title || !image || !original) return;
+      title.textContent = button.dataset.title;
+      image.src = button.dataset.image;
+      image.alt = `Diagrama de arquitetura de ${button.dataset.title}`;
+      original.href = button.dataset.image;
+      dialog.showModal();
+    });
   });
-});
-document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => {
-  if (event.target === dialog) {
-    const bounds = dialog.getBoundingClientRect();
-    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
-  }
-});
+  dialog.querySelector('.dialog-close')?.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    if (event.target === dialog) {
+      const bounds = dialog.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+    }
+  });
+}

@@ -1,0 +1,137 @@
+/* Local SVG technology marks. Visible labels are available on hover and focus. */
+.tech-icons,
+.cover-techs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tech-icon {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--line, #35372f);
+  border-radius: 15px;
+  background: #1b1e18;
+  cursor: default;
+  isolation: isolate;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.tech-icon img {
+  display: block;
+  width: 38px;
+  height: 38px;
+  max-width: 100%;
+  object-fit: contain;
+  animation: tech-drift 6s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -450ms);
+}
+
+.tech-icon:nth-child(2n) img { animation-delay: -1.1s; }
+.tech-icon:nth-child(3n) img { animation-delay: -2.3s; }
+.tech-icon:nth-child(5n) img { animation-delay: -3.4s; }
+.tech-icon[data-tech="github"] img,
+.tech-icon[data-tech="pandas"] img {
+  filter: brightness(0) invert(.91);
+}
+
+.tech-icon:hover,
+.tech-icon:focus-visible {
+  border-color: var(--lime, #c5f567);
+  background: #252d1d;
+  z-index: 3;
+}
+
+.tech-icon:focus-visible {
+  outline: 2px solid var(--lime, #c5f567);
+  outline-offset: 4px;
+}
+
+.tech-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  z-index: 5;
+  width: max-content;
+  max-width: min(220px, 70vw);
+  padding: 7px 10px;
+  border: 1px solid #454a3b;
+  border-radius: 7px;
+  background: #20251a;
+  color: #f2f3eb;
+  box-shadow: 0 5px 20px #0003;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 4px);
+  transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
+  pointer-events: none;
+}
+
+.tech-icon:hover .tech-tooltip,
+.tech-icon:focus-within .tech-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* Compact marks use the card's existing ink color and do not widen the card. */
+.cover-techs { gap: 9px; max-width: 100%; }
+.cover-techs .tech-icon {
+  flex-basis: 32px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+}
+.cover-techs .tech-icon img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0);
+  opacity: .77;
+}
+.cover-techs .tech-icon:hover,
+.cover-techs .tech-icon:focus-visible { background: #0000000e; }
+.cover-techs .tech-icon:focus-visible { outline-color: currentColor; }
+.cover-techs .tech-tooltip { top: calc(100% + 8px); bottom: auto; }
+.cover-techs .tech-icon:first-child .tech-tooltip { left: 0; transform: translateY(4px); }
+.cover-techs .tech-icon:first-child:hover .tech-tooltip,
+.cover-techs .tech-icon:first-child:focus-within .tech-tooltip { transform: translateY(0); }
+
+@keyframes tech-drift {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-3px) rotate(2deg); }
+}
+
+@media (max-width: 560px) {
+  .tech-icons { gap: 10px; }
+  .tech-icon { flex-basis: 56px; width: 56px; height: 56px; border-radius: 13px; }
+  .tech-icon img { width: 32px; height: 32px; }
+  .cover-techs { gap: 5px; }
+  .cover-techs .tech-icon { flex-basis: 28px; width: 28px; height: 28px; }
+  .cover-techs .tech-icon img { width: 22px; height: 22px; }
+}
+
+body.motion-paused .tech-icon img { animation: none !important; }
+body.motion-paused .tech-icon,
+body.motion-paused .tech-tooltip { transition: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-icon img { animation: none !important; }
+  .tech-icon, .tech-tooltip { transition: none !important; }
+}
