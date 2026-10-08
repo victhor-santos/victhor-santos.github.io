@@ -28,11 +28,11 @@
   const previous = document.querySelector('#narration-prev');
   const next = document.querySelector('#narration-next');
   const summaries = [
-    'A jornada do Victhor começa com Java: orientação a objetos, estruturas de dados e boas práticas. Essa base sustenta o que ele está construindo agora.',
-    'Depois vêm as aplicações backend. Com Spring Boot, APIs, bancos de dados, Docker e testes, ele aprende a transformar código em sistemas organizados e de fácil manutenção.',
-    'No delivery.ai, essa base ganha forma em microsserviços. O catálogo já tem persistência e testes de integração. As demais regras de negócio continuam em desenvolvimento.',
-    'Python e Machine Learning acrescentam uma nova camada à jornada: preparar dados, treinar e avaliar modelos, e entender como integrar previsões a aplicações.',
-    'A direção é AI Engineering. Inteligência de rotas, MLOps e Cloud fazem parte dos próximos passos. O objetivo é combinar modelos, APIs, dados e infraestrutura em sistemas reais.'
+    'A jornada do Victhor começa com Java puro: orientação a objetos, coleções e tratamento de exceções. É a base de tudo o que ele constrói hoje.',
+    'Depois vêm as APIs REST. Com Spring Boot, Spring Security, JPA e PostgreSQL, ele transforma regras de negócio em endpoints seguros e bem organizados.',
+    'Na AI Delivery Platform, essa base vira microsserviços: um gateway, cinco serviços Spring Boot, um banco por serviço e autenticação JWT.',
+    'Qualidade faz parte da entrega: Testcontainers, testes de segurança, CI no GitHub Actions e o ambiente inteiro em Docker Compose.',
+    'A V1 está concluída. O próximo passo é crescer num time de back-end, com code review e sistemas em produção.'
   ];
   function present(index) {
     if (index < 0 || index >= summaries.length) return;

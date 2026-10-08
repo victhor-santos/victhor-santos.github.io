@@ -1,6 +1,6 @@
-# Victhor Santos — AI Engineering Portfolio
+# Victhor Santos — Portfólio Back-end Java
 
-Portfólio profissional de Victhor Santos, estudante de Engenharia de Software focado em AI Engineering. O site apresenta a evolução de fundamentos em Java e back-end para sistemas que integram Python e Machine Learning a aplicações reais.
+Portfólio profissional de Victhor Santos, estudante de Engenharia de Software na PUC Minas e desenvolvedor back-end Java. O site apresenta a evolução de Java puro a APIs REST com Spring Boot e a uma plataforma de delivery em microsserviços.
 
 O projeto é estático, responsivo, navegável por teclado e respeita a preferência de redução de movimento. Usa HTML, CSS e JavaScript sem dependências de instalação.
 
@@ -10,7 +10,7 @@ Com Node.js instalado, execute `node server.mjs` nesta pasta e abra http://127.0
 
 ## Personalizar
 
-- `dist/index.html`: apresentação, retrato sem fundo e trajetória em cinco capítulos.
+- `dist/index.html`: apresentação, retrato sem fundo e trajetória em cinco capítulos (fundamentos, APIs REST, microsserviços, qualidade e próximos passos).
 - `dist/projetos.html`: projetos, carrosséis e diagramas.
 - `dist/experience.css` e `dist/experience.js`: apresentação, leitura guiada e controles de movimento.
 - `dist/penguin.js`: pinguim 3D procedural, usando Three.js local (MIT).
@@ -19,7 +19,7 @@ Com Node.js instalado, execute `node server.mjs` nesta pasta e abra http://127.0
 - `dist/script.js`: cards clicáveis, carrosséis, ampliação de diagramas e ano do rodapé.
 - `scripts/generate-diagrams.mjs`: gera os diagramas SVG; execute com `node scripts/generate-diagrams.mjs`.
 
-O projeto principal distingue a base Java implementada da integração de Route Intelligence planejada. Python/ML são parte da direção de estudos e evolução da plataforma, sem apresentar a integração como concluída.
+O projeto principal é apresentado na V1: API Gateway, cinco microsserviços Spring Boot, interface web e um serviço Python de estimativa de rotas.
 
 Os três projetos foram selecionados pela data de criação dos repositórios públicos em 24/09/2026. O conteúdo é estático: novos repositórios não substituem automaticamente a seleção.
 
